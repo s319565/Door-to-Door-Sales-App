@@ -46,16 +46,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateNewAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewAccountPage.Designer.cs">
+      <DependentUpon>CreateNewAccountPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewRoutePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewRoutePage.Designer.cs">
+      <DependentUpon>CreateNewRoutePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginPage.Designer.cs">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewRoutePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewRoutePage.Designer.cs">
+      <DependentUpon>ViewRoutePage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateNewAccountPage.resx">
+      <DependentUpon>CreateNewAccountPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewRoutePage.resx">
+      <DependentUpon>CreateNewRoutePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginPage.resx">
+      <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewRoutePage.resx">
+      <DependentUpon>ViewRoutePage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
