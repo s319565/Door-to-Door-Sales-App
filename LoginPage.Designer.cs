@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBack = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,17 +44,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnBack.ForeColor = System.Drawing.Color.Red;
-            this.btnBack.Location = new System.Drawing.Point(12, 410);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(126, 28);
-            this.btnBack.TabIndex = 10;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -203,7 +191,6 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -216,8 +203,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
