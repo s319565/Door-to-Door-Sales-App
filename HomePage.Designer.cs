@@ -56,7 +56,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Home Page";
             this.label1.UseMnemonic = false;
-            
             // 
             // label2
             // 
@@ -86,6 +85,7 @@
             this.btnSignOut.TabIndex = 5;
             this.btnSignOut.Text = "Sign Out";
             this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // HomePage
             // 
@@ -99,7 +99,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "HomePage";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
