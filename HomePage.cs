@@ -37,14 +37,29 @@ namespace Door_to_Door_Sales_App
             //Close current form
             this.Close();
             //Create a thread to RUN a NEW application with the desired form
-            Thread t = new Thread(new ThreadStart(ThreadHowToForm));
+            Thread t = new Thread(new ThreadStart(Thread));
             t.Start();
         }
 
-        private void ThreadHowToForm()
+        private void Thread()
         {
             //RUNs a NEW application with the desired form
             Application.Run(new LoginPage());
+        }
+
+        private void btnCreateRoute_Click(object sender, EventArgs e)
+        {
+            //Close current form
+            this.Close();
+            //Create a thread to RUN a NEW application with the desired form
+            Thread t = new Thread(new ThreadStart(Thread2));
+            t.Start();
+        }
+
+        private void Thread2()
+        {
+            //RUNs a NEW application with the desired form
+            Application.Run(new CreateNewRoutePage());
         }
     }
 }

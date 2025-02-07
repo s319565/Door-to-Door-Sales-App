@@ -119,6 +119,7 @@
             this.btnSignIn.TabIndex = 15;
             this.btnSignIn.Text = "Sign in";
             this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // btnCreateNewAccount
             // 
@@ -130,6 +131,7 @@
             this.btnCreateNewAccount.TabIndex = 16;
             this.btnCreateNewAccount.Text = "Create New Account";
             this.btnCreateNewAccount.UseVisualStyleBackColor = true;
+            this.btnCreateNewAccount.Click += new System.EventHandler(this.btnCreateNewAccount_Click_1);
             // 
             // label5
             // 
@@ -196,6 +198,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "LoginPage";
             this.Text = "LoginPage";
+            this.Load += new System.EventHandler(this.LoginPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

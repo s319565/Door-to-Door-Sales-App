@@ -48,6 +48,7 @@
             this.btnSignIn.TabIndex = 22;
             this.btnSignIn.Text = "Create Account";
             this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // btnPassword
             // 
@@ -118,6 +119,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "CreateNewAccountPage";
             this.Text = "CreateNewAccountPage";
+            this.Load += new System.EventHandler(this.CreateNewAccountPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

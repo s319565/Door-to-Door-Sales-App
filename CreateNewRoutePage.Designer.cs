@@ -48,6 +48,7 @@
             this.btnCreateRoute.TabIndex = 29;
             this.btnCreateRoute.Text = "Create Route";
             this.btnCreateRoute.UseVisualStyleBackColor = true;
+            this.btnCreateRoute.Click += new System.EventHandler(this.btnCreateRoute_Click);
             // 
             // label7
             // 
@@ -120,6 +121,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "CreateNewRoutePage";
             this.Text = "CreateNewRoutePage";
+            this.Load += new System.EventHandler(this.CreateNewRoutePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
