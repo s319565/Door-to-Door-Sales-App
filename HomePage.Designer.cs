@@ -31,10 +31,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.btnCreateRoute = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtRouteName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -68,14 +70,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Routes";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Location = new System.Drawing.Point(148, 145);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(552, 269);
-            this.panel1.TabIndex = 4;
-            // 
             // btnSignOut
             // 
             this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -100,14 +94,33 @@
             this.btnCreateRoute.UseVisualStyleBackColor = true;
             this.btnCreateRoute.Click += new System.EventHandler(this.btnCreateRoute_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(120, 175);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(560, 235);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // txtRouteName
+            // 
+            this.txtRouteName.Location = new System.Drawing.Point(255, 116);
+            this.txtRouteName.Name = "txtRouteName";
+            this.txtRouteName.Size = new System.Drawing.Size(218, 20);
+            this.txtRouteName.TabIndex = 8;
+            this.txtRouteName.TextChanged += new System.EventHandler(this.txtRouteName_TextChanged);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRouteName);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnCreateRoute);
             this.Controls.Add(this.btnSignOut);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -115,6 +128,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,9 +138,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Button btnCreateRoute;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtRouteName;
     }
 }
 

@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace Door_to_Door_Sales_App
 {
     public partial class HomePage : Form
     {
+        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""C:\__Students\McEwan\DoorToDoorSalesApp\Door to Door Sales App\Dbase\SalesAppDatabase.accdb""");
+
         public HomePage()
         {
             InitializeComponent();
@@ -54,12 +57,18 @@ namespace Door_to_Door_Sales_App
             //Create a thread to RUN a NEW application with the desired form
             Thread t = new Thread(new ThreadStart(Thread2));
             t.Start();
+           
         }
 
         private void Thread2()
         {
             //RUNs a NEW application with the desired form
             Application.Run(new CreateNewRoutePage());
+        }
+
+        private void txtRouteName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

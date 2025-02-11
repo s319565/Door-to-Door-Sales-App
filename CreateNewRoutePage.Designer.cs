@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelRouteNotes = new System.Windows.Forms.Panel();
+            this.txtRouteNotes = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +108,19 @@
             this.panelRouteNotes.TabIndex = 30;
             this.panelRouteNotes.UseWaitCursor = true;
             // 
+            // txtRouteNotes
+            // 
+            this.txtRouteNotes.Location = new System.Drawing.Point(299, 215);
+            this.txtRouteNotes.Name = "txtRouteNotes";
+            this.txtRouteNotes.Size = new System.Drawing.Size(202, 20);
+            this.txtRouteNotes.TabIndex = 31;
+            // 
             // CreateNewRoutePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRouteNotes);
             this.Controls.Add(this.panelRouteNotes);
             this.Controls.Add(this.btnCreateRoute);
             this.Controls.Add(this.label7);
@@ -137,5 +146,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelRouteNotes;
+        private System.Windows.Forms.TextBox txtRouteNotes;
     }
 }
