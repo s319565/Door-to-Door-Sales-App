@@ -9,16 +9,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using Door_to_Door_Sales_App.Repository;
 
 namespace Door_to_Door_Sales_App
 {
     public partial class HomePage : Form
     {
-        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""C:\__Students\McEwan\DoorToDoorSalesApp\Door to Door Sales App\Dbase\SalesAppDatabase.accdb""");
 
+        private readonly DoorToDoorRepository _repository;
         public HomePage()
         {
             InitializeComponent();
+            _repository = new DoorToDoorRepository();
         }
 
         private void HomePage_Load(object sender, EventArgs e)
@@ -29,12 +31,20 @@ namespace Door_to_Door_Sales_App
 
         private void SetControls()
         {
-            //Form
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-        }
+            this.LoadDataGridView();
+            
 
+        }
+        private void LoadDataGridView()
+        {
+            var routes = _repository.GetAllRoutes();
+            this.dgvRoutes.DataSource = routes;
+
+            // Optional: Rename columns for a clearer display
+            this.dgvRoutes.Columns["RouteID"].HeaderText = "Route ID";
+            this.dgvRoutes.Columns["routeName"].HeaderText = "Route Name";
+            this.dgvRoutes.Columns["RouteNotes"].HeaderText = "Route Notes";
+        }
         private void btnSignOut_Click(object sender, EventArgs e)
         {
             //Close current form

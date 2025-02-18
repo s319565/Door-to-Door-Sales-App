@@ -33,10 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.btnCreateRoute = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRoutes = new System.Windows.Forms.DataGridView();
             this.txtRouteName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -94,15 +94,15 @@
             this.btnCreateRoute.UseVisualStyleBackColor = true;
             this.btnCreateRoute.Click += new System.EventHandler(this.btnCreateRoute_Click);
             // 
-            // dataGridView1
+            // dgvRoutes
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(120, 175);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(560, 235);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvRoutes.AllowUserToAddRows = false;
+            this.dgvRoutes.AllowUserToDeleteRows = false;
+            this.dgvRoutes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoutes.Location = new System.Drawing.Point(120, 175);
+            this.dgvRoutes.Name = "dgvRoutes";
+            this.dgvRoutes.Size = new System.Drawing.Size(560, 235);
+            this.dgvRoutes.TabIndex = 7;
             // 
             // txtRouteName
             // 
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtRouteName);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvRoutes);
             this.Controls.Add(this.btnCreateRoute);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.label2);
@@ -128,7 +128,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +140,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Button btnCreateRoute;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRoutes;
         private System.Windows.Forms.TextBox txtRouteName;
     }
 }

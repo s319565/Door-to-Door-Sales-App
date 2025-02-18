@@ -17,7 +17,7 @@ namespace Door_to_Door_Sales_App
     public partial class CreateNewRoutePage : Form
     {
 
-        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""C:\__Students\McEwan\DoorToDoorSalesApp\Door to Door Sales App\Dbase\SalesAppDatabase.accdb""");
+        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\__Students\McEwan\DoorToDoorSalesApp\Door to Door Sales App\Dbase\SalesAppDatabase.accdb");
         public CreateNewRoutePage()
         {
             InitializeComponent();
@@ -40,11 +40,12 @@ namespace Door_to_Door_Sales_App
         {
             try
             {
+                conn.Open();
                 OleDbCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "insert into SalesAppDatabase(RouteID,RouteName,RouteNotes)values('" + txtRouteName.Text + "','" + txtRouteNotes.Text + "')";
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Route Created");
+                MessageBox.Show("Route Created in Database");
                 conn.Close();
             }
             catch (Exception ex)
