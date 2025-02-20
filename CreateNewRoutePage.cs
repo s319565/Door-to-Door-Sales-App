@@ -10,17 +10,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using Door_to_Door_Sales_App.Repository;
 
 namespace Door_to_Door_Sales_App
 {
-
     public partial class CreateNewRoutePage : Form
     {
-
-        OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\__Students\McEwan\DoorToDoorSalesApp\Door to Door Sales App\Dbase\SalesAppDatabase.accdb");
+        private readonly DoorToDoorRepository _repository;
         public CreateNewRoutePage()
         {
             InitializeComponent();
+            _repository = new DoorToDoorRepository();
         }
         private void CreateNewRoutePage_Load(object sender, EventArgs e)
         {
@@ -30,35 +30,21 @@ namespace Door_to_Door_Sales_App
 
         private void SetControls()
         {
-            //Form
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.LoadDataGridView();
+            this.txtRouteName.Text = string.Empty;
+            this.txtRouteNotes.Text = string.Empty;
         }
-
-        private void btnCreateRoute_Click(object sender, EventArgs e)
+        private void LoadDataGridView()
         {
-            try
-            {
-                conn.Open();
-                OleDbCommand cmd = conn.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into SalesAppDatabase(RouteID,RouteName,RouteNotes)values('" + txtRouteName.Text + "','" + txtRouteNotes.Text + "')";
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Route Created in Database");
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                conn.Close();
-            }
-            ;//Close current form
-            this.Close();
-            //Create a thread to RUN a NEW application with the desired form
-            Thread t = new Thread(new ThreadStart(Thread));
-            t.Start();
+            var routes = _repository.GetAllRoutes();
+            this.dgvRoutes.DataSource = routes;
+
+            // Optional: Rename columns for a clearer display
+            this.dgvRoutes.Columns["RouteID"].HeaderText = "Route ID";
+            this.dgvRoutes.Columns["routeName"].HeaderText = "Route Name";
+            this.dgvRoutes.Columns["RouteNotes"].HeaderText = "Route Notes";
         }
+       
 
         private void Thread()
         {
@@ -66,6 +52,26 @@ namespace Door_to_Door_Sales_App
             Application.Run(new HomePage());
         }
 
-        
+        private void btnCreateRoute_Click(object sender, EventArgs e)
+        {
+            DoorToDoorRoutes route = new DoorToDoorRoutes();
+
+            route.routeName = this.txtRouteName.Text.Trim();
+            route.RouteNotes = this.txtRouteNotes.Text.Trim();
+            _repository.AddRoute(route);
+            
+
+            //Added
+            MessageBox.Show("Successfully added Route.");
+            this.SetControls();
+
+            ;//Close current form
+            this.Close();
+            //Create a thread to RUN a NEW application with the desired form
+            Thread t = new Thread(new ThreadStart(Thread));
+            t.Start();
+        }
+
+
     }
 }

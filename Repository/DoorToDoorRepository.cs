@@ -106,7 +106,7 @@ namespace Door_to_Door_Sales_App.Repository
         {
             string query = @"INSERT INTO Routes
                             (routeName, RouteNotes)
-                            VALUES (?, ?, ?)";
+                            VALUES (?, ?)";
                                      
             /*
              (@RouteID, @routeName, @RouteNotes)";
@@ -124,6 +124,8 @@ namespace Door_to_Door_Sales_App.Repository
             }
         }
     }
+
+    // Add method to make house table for existing routes
 }
         
 }

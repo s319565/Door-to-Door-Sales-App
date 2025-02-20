@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using Door_to_Door_Sales_App.Repository;
+using System.Data.Odbc;
 
 namespace Door_to_Door_Sales_App
 {
@@ -17,6 +18,7 @@ namespace Door_to_Door_Sales_App
     {
 
         private readonly DoorToDoorRepository _repository;
+        private readonly DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
         public HomePage()
         {
             InitializeComponent();
@@ -44,6 +46,16 @@ namespace Door_to_Door_Sales_App
             this.dgvRoutes.Columns["RouteID"].HeaderText = "Route ID";
             this.dgvRoutes.Columns["routeName"].HeaderText = "Route Name";
             this.dgvRoutes.Columns["RouteNotes"].HeaderText = "Route Notes";
+            addButtonColumn();
+            dgvRoutes.Columns.Add(btn);
+        }
+
+        private void addButtonColumn()
+        {
+            btn.HeaderText = "Click to View Route";
+            btn.Text = "View Route";
+            btn.Name = "btn";
+            btn.UseColumnTextForButtonValue = true;
         }
         private void btnSignOut_Click(object sender, EventArgs e)
         {
@@ -76,9 +88,32 @@ namespace Door_to_Door_Sales_App
             Application.Run(new CreateNewRoutePage());
         }
 
+        private void Thread3()
+        {
+           //RUNs a NEW application with the desired form
+            Application.Run(new ViewRoutePage());
+        }
+
         private void txtRouteName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvRoutes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                int routeID = Convert.ToInt32(dgvRoutes.Rows[e.RowIndex].Cells[0].Value);
+                DoorToDoorRoutes route = _repository.GetRouteById(routeID);
+
+                // CAll METHOD IN REPOSITORY TO MAKE HOUSE TABLE FOR THIS ROUTE ID
+
+
+                this.Close();
+                //Create a thread to RUN a NEW application with the desired form
+                Thread t = new Thread(new ThreadStart(Thread3));
+                t.Start();
+            }
         }
     }
 }

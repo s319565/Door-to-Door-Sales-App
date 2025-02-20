@@ -34,9 +34,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelRouteNotes = new System.Windows.Forms.Panel();
             this.txtRouteNotes = new System.Windows.Forms.TextBox();
+            this.dgvRoutes = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateRoute
@@ -99,15 +100,6 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
-            // panelRouteNotes
-            // 
-            this.panelRouteNotes.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panelRouteNotes.Location = new System.Drawing.Point(111, 253);
-            this.panelRouteNotes.Name = "panelRouteNotes";
-            this.panelRouteNotes.Size = new System.Drawing.Size(553, 100);
-            this.panelRouteNotes.TabIndex = 30;
-            this.panelRouteNotes.UseWaitCursor = true;
-            // 
             // txtRouteNotes
             // 
             this.txtRouteNotes.Location = new System.Drawing.Point(299, 215);
@@ -115,13 +107,21 @@
             this.txtRouteNotes.Size = new System.Drawing.Size(202, 20);
             this.txtRouteNotes.TabIndex = 31;
             // 
+            // dgvRoutes
+            // 
+            this.dgvRoutes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRoutes.Location = new System.Drawing.Point(133, 254);
+            this.dgvRoutes.Name = "dgvRoutes";
+            this.dgvRoutes.Size = new System.Drawing.Size(353, 150);
+            this.dgvRoutes.TabIndex = 32;
+            // 
             // CreateNewRoutePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvRoutes);
             this.Controls.Add(this.txtRouteNotes);
-            this.Controls.Add(this.panelRouteNotes);
             this.Controls.Add(this.btnCreateRoute);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtRouteName);
@@ -132,6 +132,7 @@
             this.Text = "CreateNewRoutePage";
             this.Load += new System.EventHandler(this.CreateNewRoutePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +146,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panelRouteNotes;
         private System.Windows.Forms.TextBox txtRouteNotes;
+        private System.Windows.Forms.DataGridView dgvRoutes;
     }
 }
