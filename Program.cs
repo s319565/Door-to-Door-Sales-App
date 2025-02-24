@@ -17,6 +17,7 @@ namespace Door_to_Door_Sales_App
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginPage());
+
         }
     }
 }

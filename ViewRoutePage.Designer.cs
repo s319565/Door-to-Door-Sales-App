@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelHouses = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtRouteName = new System.Windows.Forms.TextBox();
@@ -36,16 +35,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddHouse = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.txtRouteNotes = new System.Windows.Forms.RichTextBox();
+            this.dgvHouses = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelNotes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHouses)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelHouses
-            // 
-            this.panelHouses.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panelHouses.Location = new System.Drawing.Point(109, 131);
-            this.panelHouses.Name = "panelHouses";
-            this.panelHouses.Size = new System.Drawing.Size(608, 140);
-            this.panelHouses.TabIndex = 7;
             // 
             // label1
             // 
@@ -71,15 +66,17 @@
             // txtRouteName
             // 
             this.txtRouteName.Enabled = false;
-            this.txtRouteName.Location = new System.Drawing.Point(134, 105);
+            this.txtRouteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.txtRouteName.Location = new System.Drawing.Point(123, 95);
             this.txtRouteName.Name = "txtRouteName";
-            this.txtRouteName.Size = new System.Drawing.Size(100, 20);
+            this.txtRouteName.Size = new System.Drawing.Size(220, 30);
             this.txtRouteName.TabIndex = 20;
             this.txtRouteName.Text = "Route name";
             // 
             // panelNotes
             // 
             this.panelNotes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelNotes.Controls.Add(this.txtRouteNotes);
             this.panelNotes.Location = new System.Drawing.Point(113, 324);
             this.panelNotes.Name = "panelNotes";
             this.panelNotes.Size = new System.Drawing.Size(604, 114);
@@ -99,12 +96,13 @@
             // 
             this.btnAddHouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnAddHouse.ForeColor = System.Drawing.Color.Red;
-            this.btnAddHouse.Location = new System.Drawing.Point(598, 276);
+            this.btnAddHouse.Location = new System.Drawing.Point(7, 131);
             this.btnAddHouse.Name = "btnAddHouse";
             this.btnAddHouse.Size = new System.Drawing.Size(109, 42);
             this.btnAddHouse.TabIndex = 23;
             this.btnAddHouse.Text = "Add House";
             this.btnAddHouse.UseVisualStyleBackColor = true;
+            this.btnAddHouse.Click += new System.EventHandler(this.btnAddHouse_Click);
             // 
             // btnBack
             // 
@@ -116,31 +114,50 @@
             this.btnBack.TabIndex = 24;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // txtRouteNotes
+            // 
+            this.txtRouteNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtRouteNotes.Location = new System.Drawing.Point(3, 3);
+            this.txtRouteNotes.Name = "txtRouteNotes";
+            this.txtRouteNotes.Size = new System.Drawing.Size(598, 108);
+            this.txtRouteNotes.TabIndex = 0;
+            this.txtRouteNotes.Text = "";
+            // 
+            // dgvHouses
+            // 
+            this.dgvHouses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHouses.Location = new System.Drawing.Point(122, 131);
+            this.dgvHouses.Name = "dgvHouses";
+            this.dgvHouses.Size = new System.Drawing.Size(592, 150);
+            this.dgvHouses.TabIndex = 25;
             // 
             // ViewRoutePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvHouses);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddHouse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelNotes);
             this.Controls.Add(this.txtRouteName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelHouses);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ViewRoutePage";
             this.Text = "ViewRoutePage";
+            this.Load += new System.EventHandler(this.ViewRoutePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelNotes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHouses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelHouses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtRouteName;
@@ -148,5 +165,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddHouse;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.RichTextBox txtRouteNotes;
+        private System.Windows.Forms.DataGridView dgvHouses;
     }
 }

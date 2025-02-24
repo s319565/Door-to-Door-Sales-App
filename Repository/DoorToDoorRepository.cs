@@ -3,6 +3,7 @@ using Door_to_Door_Sales_App.Models;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace Door_to_Door_Sales_App.Repository
 {
@@ -11,122 +12,182 @@ namespace Door_to_Door_Sales_App.Repository
     {
         private readonly string _connectionString;
 
-    public DoorToDoorRepository()
-    {
-        //Gets and Builds the Application Path of the applicatino location
-        string basePath = CurrentPath.GetDbasePath() + "\\";
-        //Gets name of the database
-        string dbName = DbaseNames.RouteDBAse;
-        //Combines the Path with the Database
-        string path = Path.Combine(basePath, dbName); // Safely combines paths
-
-        //Gets the Connection String from the App.Config file
-        string dbase = ConfigurationManager.ConnectionStrings["AccessDbODBC"].ConnectionString;
-
-        //Replaces {0} and {1} with correct values
-        string cs = string.Format(dbase, DbaseNames.RouteDriver, path);
-
-        //Connection String we will use
-        _connectionString = cs;
-    }
-
-    public List<DoorToDoorRoutes> GetAllRoutes()
-    {
-        var Routes = new List<DoorToDoorRoutes>();
-
-        using (var connection = new OdbcConnection(_connectionString))
+        public DoorToDoorRepository()
         {
+            //Gets and Builds the Application Path of the applicatino location
+            string basePath = CurrentPath.GetDbasePath() + "\\";
+            //Gets name of the database
+            string dbName = DbaseNames.RouteDBAse;
+            //Combines the Path with the Database
+            string path = Path.Combine(basePath, dbName); // Safely combines paths
+
+            //Gets the Connection String from the App.Config file
+            string dbase = ConfigurationManager.ConnectionStrings["AccessDbODBC"].ConnectionString;
+
+            //Replaces {0} and {1} with correct values
+            string cs = string.Format(dbase, DbaseNames.RouteDriver, path);
+
+            //Connection String we will use
+            _connectionString = cs;
+        }
+
+        public List<DoorToDoorRoutes> GetAllRoutes()
+        {
+            var Routes = new List<DoorToDoorRoutes>();
+
+            using (var connection = new OdbcConnection(_connectionString))
+            {
                 string query = @"SELECT RouteID, routeName, RouteNotes
                                  FROM Routes";
-                                 //WHERE RouteID = @RouteID";
+                //WHERE RouteID = @RouteID";
 
-            using (var command = new OdbcCommand(query, connection))
-            {
-                connection.Open();
-                using (var reader = command.ExecuteReader())
+                using (var command = new OdbcCommand(query, connection))
                 {
-                    if (reader.HasRows)
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2))
+                            while (reader.Read())
                             {
-                                Routes.Add(new DoorToDoorRoutes
+                                if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2))
                                 {
-                                    RouteID = reader.GetInt32(0),
-                                    routeName = reader.GetString(1),
-                                    RouteNotes = reader.GetString(2),
-                                });
+                                    Routes.Add(new DoorToDoorRoutes
+                                    {
+                                        RouteID = reader.GetInt32(0),
+                                        routeName = reader.GetString(1),
+                                        RouteNotes = reader.GetString(2),
+                                    });
+                                }
                             }
                         }
                     }
                 }
             }
+
+            return Routes;
         }
 
-        return Routes;
-    }
-
-    public DoorToDoorRoutes GetRouteById(int RouteID)
-    {
-        DoorToDoorRoutes route = null;
-
-        using (var connection = new OdbcConnection(_connectionString))
+        public DoorToDoorRoutes GetRouteById(int RouteID)
         {
-            string query = @"SELECT RouteID, routeName, RouteNotes
-                FROM Routes
-                WHERE RouteID = @RouteID";
+            DoorToDoorRoutes route = null;
 
-
-            using (var command = new OdbcCommand(query, connection))
+            using (var connection = new OdbcConnection(_connectionString))
             {
-                command.Parameters.AddWithValue("@RouteID", RouteID);
-                connection.Open();
-                using (var reader = command.ExecuteReader())
+                string query = @"SELECT RouteID, routeName, RouteNotes
+                FROM Routes
+                WHERE RouteID = ?";
+
+
+                using (var command = new OdbcCommand(query, connection))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("?", RouteID);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
                     {
-                        route = new DoorToDoorRoutes
+                        if (reader.Read())
                         {
-                            RouteID = reader.GetInt32(0),
-                            routeName = reader.GetString(1),
-                            RouteNotes = reader.GetString(2),
-                        };
+                            route = new DoorToDoorRoutes
+                            {
+                                RouteID = reader.GetInt32(0),
+                                routeName = reader.GetString(1),
+                                RouteNotes = reader.GetString(2),
+                            };
+                        }
                     }
+                }
+            }
+
+            return route;
+        }
+
+        public void AddRoute(DoorToDoorRoutes route)
+        {
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"INSERT INTO Routes
+                            (routeName, RouteNotes)
+                            VALUES (?, ?)";
+
+                /*
+                 (@RouteID, @routeName, @RouteNotes)";
+                */
+
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.Add(new OdbcParameter("@routeName", OdbcType.NVarChar) { Value = route.routeName });
+                    command.Parameters.Add(new OdbcParameter("@RouteNotes", OdbcType.NVarChar) { Value = route.RouteNotes });
+
+                    //Open the database connection
+                    connection.Open();
+                    //Insert the data
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public List<Houses> GetRoutesHouses(int RouteID)
+        {
+            var Houses = new List<Houses>();
+
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"SELECT Houses.[HouseID], Houses.[RouteID], Houses.[HouseAddress], Houses.[HouseNotes]
+                FROM Houses 
+                WHERE RouteID = ?";
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", RouteID);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2))
+                                {
+                                    Houses.Add(new Houses
+                                    {
+                                        HouseID = reader.GetInt32(0),
+                                        RouteID = reader.GetInt32(0),
+                                        HouseAddress = reader.GetString(1),
+                                        HouseNotes = reader.GetString(2),
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Houses;
+        }
+        public void AddHouse(Houses house)
+        {
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"INSERT INTO Houses
+                            (RouteID, HouseAddress, HouseNotes)
+                            VALUES (?, ?, ?)";
+
+                /*
+                 (@HouseID, @RouteID, @HouseAddress, @HouseNotes)";
+                */
+
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.Add(new OdbcParameter("@RouteID", OdbcType.Int) { Value = house.RouteID });
+                    command.Parameters.Add(new OdbcParameter("@HouseAddress", OdbcType.NVarChar) { Value = house.HouseAddress });
+                    command.Parameters.Add(new OdbcParameter("@HouseNotes", OdbcType.NVarChar) { Value = house.HouseNotes });
+
+                    //Open the database connection
+                    connection.Open();
+                    //Insert the data
+                    command.ExecuteNonQuery();
                 }
             }
         }
 
-        return route;
     }
-
-    public void AddRoute(DoorToDoorRoutes route)
-    {
-        using (var connection = new OdbcConnection(_connectionString))
-        {
-            string query = @"INSERT INTO Routes
-                            (routeName, RouteNotes)
-                            VALUES (?, ?)";
-                                     
-            /*
-             (@RouteID, @routeName, @RouteNotes)";
-            */
-
-            using (var command = new OdbcCommand(query, connection))
-            {
-                command.Parameters.Add(new OdbcParameter("@routeName", OdbcType.NVarChar) { Value = route.routeName });
-                command.Parameters.Add(new OdbcParameter("@RouteNotes", OdbcType.NVarChar) { Value = route.RouteNotes });
-
-                //Open the database connection
-                connection.Open();
-                //Insert the data
-                command.ExecuteNonQuery();
-            }
-        }
-    }
-
-    // Add method to make house table for existing routes
-}
-        
 }
 

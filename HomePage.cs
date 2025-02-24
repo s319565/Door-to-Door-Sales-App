@@ -106,8 +106,10 @@ namespace Door_to_Door_Sales_App
                 int routeID = Convert.ToInt32(dgvRoutes.Rows[e.RowIndex].Cells[0].Value);
                 DoorToDoorRoutes route = _repository.GetRouteById(routeID);
 
-                // CAll METHOD IN REPOSITORY TO MAKE HOUSE TABLE FOR THIS ROUTE ID
-
+                
+                
+                ViewRoutePage viewRoutePage = new ViewRoutePage();
+                ViewRoutePage.route = route;
 
                 this.Close();
                 //Create a thread to RUN a NEW application with the desired form

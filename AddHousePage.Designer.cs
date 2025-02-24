@@ -31,9 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHouseAddress = new System.Windows.Forms.TextBox();
             this.btnCreateNewHouse = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHouseNotes = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,12 +70,12 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Enter House Address: ";
             // 
-            // textBox1
+            // txtHouseAddress
             // 
-            this.textBox1.Location = new System.Drawing.Point(331, 149);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 20);
-            this.textBox1.TabIndex = 28;
+            this.txtHouseAddress.Location = new System.Drawing.Point(331, 149);
+            this.txtHouseAddress.Name = "txtHouseAddress";
+            this.txtHouseAddress.Size = new System.Drawing.Size(271, 20);
+            this.txtHouseAddress.TabIndex = 28;
             // 
             // btnCreateNewHouse
             // 
@@ -85,6 +87,7 @@
             this.btnCreateNewHouse.TabIndex = 29;
             this.btnCreateNewHouse.Text = "Create New House";
             this.btnCreateNewHouse.UseVisualStyleBackColor = true;
+            this.btnCreateNewHouse.Click += new System.EventHandler(this.btnCreateNewHouse_Click);
             // 
             // btnBack
             // 
@@ -97,14 +100,33 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label3.Location = new System.Drawing.Point(124, 184);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 24);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Enter House Notes: ";
+            // 
+            // txtHouseNotes
+            // 
+            this.txtHouseNotes.Location = new System.Drawing.Point(310, 189);
+            this.txtHouseNotes.Name = "txtHouseNotes";
+            this.txtHouseNotes.Size = new System.Drawing.Size(292, 20);
+            this.txtHouseNotes.TabIndex = 32;
+            // 
             // AddHousePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtHouseNotes);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCreateNewHouse);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHouseAddress);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -121,8 +143,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHouseAddress;
         private System.Windows.Forms.Button btnCreateNewHouse;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtHouseNotes;
     }
 }
