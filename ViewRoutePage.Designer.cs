@@ -132,6 +132,7 @@
             this.dgvHouses.Name = "dgvHouses";
             this.dgvHouses.Size = new System.Drawing.Size(592, 150);
             this.dgvHouses.TabIndex = 25;
+            this.dgvHouses.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHouses_CellClick);
             // 
             // ViewRoutePage
             // 

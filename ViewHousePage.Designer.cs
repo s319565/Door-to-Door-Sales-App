@@ -118,6 +118,7 @@
             this.button2.TabIndex = 31;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ViewHousePage
             // 
@@ -134,6 +135,7 @@
             this.Controls.Add(this.txtHouseAddress);
             this.Name = "ViewHousePage";
             this.Text = "ViewHousePage";
+            this.Load += new System.EventHandler(this.ViewHousePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHouseTransactions)).EndInit();
             this.ResumeLayout(false);

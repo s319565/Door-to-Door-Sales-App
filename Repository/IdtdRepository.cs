@@ -13,5 +13,6 @@ namespace Door_to_Door_Sales_App.Repository
         void AddRoute(DoorToDoorRoutes route);
         List<Houses> GetRoutesHouses(int RouteID);
         void AddHouse(Houses house);
+        Houses GetHouseByID(int HouseID);
     }
 }

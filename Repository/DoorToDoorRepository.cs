@@ -144,14 +144,14 @@ namespace Door_to_Door_Sales_App.Repository
                         {
                             while (reader.Read())
                             {
-                                if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2))
+                                if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2) && !reader.IsDBNull(3)) 
                                 {
                                     Houses.Add(new Houses
                                     {
                                         HouseID = reader.GetInt32(0),
-                                        RouteID = reader.GetInt32(0),
-                                        HouseAddress = reader.GetString(1),
-                                        HouseNotes = reader.GetString(2),
+                                        RouteID = reader.GetInt32(1),
+                                        HouseAddress = reader.GetString(2),
+                                        HouseNotes = reader.GetString(3),
                                     });
                                 }
                             }
@@ -176,7 +176,7 @@ namespace Door_to_Door_Sales_App.Repository
 
                 using (var command = new OdbcCommand(query, connection))
                 {
-                    command.Parameters.Add(new OdbcParameter("@RouteID", OdbcType.Int) { Value = house.RouteID });
+                    command.Parameters.Add(new OdbcParameter("@RouteID", OdbcType.Int) { Value = house.RouteID }); //ERROR with RouteID to House Syncapation
                     command.Parameters.Add(new OdbcParameter("@HouseAddress", OdbcType.NVarChar) { Value = house.HouseAddress });
                     command.Parameters.Add(new OdbcParameter("@HouseNotes", OdbcType.NVarChar) { Value = house.HouseNotes });
 
@@ -186,6 +186,39 @@ namespace Door_to_Door_Sales_App.Repository
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        public Houses GetHouseByID(int HouseID)
+        {
+            Houses house = null;
+
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"SELECT HouseID, RouteID, HouseAddress, HouseNotes
+                FROM Houses
+                WHERE HouseID = ?";
+
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", HouseID);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            house = new Houses
+                            {
+                                HouseID = reader.GetInt32(0),
+                                RouteID = reader.GetInt32(1),
+                                HouseAddress = reader.GetString(2),
+                                HouseNotes = reader.GetString(3),
+                            };
+                        }
+                    }
+                }
+            }
+
+            return house;
         }
 
     }

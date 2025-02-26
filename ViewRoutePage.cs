@@ -52,6 +52,25 @@ namespace Door_to_Door_Sales_App
             btn.Name = "btn";
             btn.UseColumnTextForButtonValue = true;
         }
+
+        private void dgvHouses_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                int houseID = Convert.ToInt32(dgvHouses.Rows[e.RowIndex].Cells[0].Value);
+                Houses house = _repository.GetHouseByID(houseID);
+
+
+
+                ViewHousePage viewHousePage = new ViewHousePage();
+                ViewHousePage.house = house;
+
+                this.Close();
+                //Create a thread to RUN a NEW application with the desired form
+                Thread t = new Thread(new ThreadStart(Thread3));
+                t.Start();
+            }
+        }
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,6 +88,10 @@ namespace Door_to_Door_Sales_App
         {
             this.Close();
             //Create a thread to RUN a NEW application with the desired form
+
+            AddHousePage addHousePage = new AddHousePage();
+            AddHousePage.route = route;
+            
             Thread t = new Thread(new ThreadStart(Thread2));
             t.Start();
         }
@@ -76,6 +99,11 @@ namespace Door_to_Door_Sales_App
         {
             //RUNs a NEW application with the desired form
             Application.Run(new AddHousePage());
+        }
+        private void Thread3()
+        {
+            //RUNs a NEW application with the desired form
+            Application.Run(new ViewHousePage());
         }
     }
 }
