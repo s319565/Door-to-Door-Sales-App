@@ -221,6 +221,105 @@ namespace Door_to_Door_Sales_App.Repository
             return house;
         }
 
+        public Transactions GetTransactionbyID(int TransactionID) {
+            Transactions transaction = null;
+
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"SELECT TransactionID, HouseID, ItemName, BoughtStatus, QuantityBought
+                FROM Transactions
+                WHERE TransactionID = ?";
+
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", TransactionID);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            transaction = new Transactions
+                            {
+                                TransactionID = reader.GetInt32(0),
+                                HouseID = reader.GetInt32(1),
+                                ItemName = reader.GetString(2),
+                                BoughtStatus = reader.GetBoolean(3),
+                                QuantityBought = reader.GetString(4),
+                            };
+                        }
+                    }
+                }
+            }
+
+            return transaction;
+        }
+
+        public void AddTransaction(Transactions transaction)
+        {
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"INSERT INTO Transactions
+                            (HouseID, ItemName, BoughtStatus, QuantityBought)
+                            VALUES (?, ?, ?, ?)";
+
+                /*
+                 (@TransactionID, @HouseID, @Itemname, @BoughtStatus, @QuantityBought)";
+                */
+
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.Add(new OdbcParameter("@HouseID", OdbcType.Int) { Value = transaction.HouseID }); //ERROR with RouteID to House Syncapation
+                    command.Parameters.Add(new OdbcParameter("@ItemName", OdbcType.NVarChar) { Value = transaction.ItemName });
+                    command.Parameters.Add(new OdbcParameter("@BoughtStatus", OdbcType.Bit) { Value = transaction.BoughtStatus });
+                    command.Parameters.Add(new OdbcParameter("@QuantityBought", OdbcType.NVarChar) { Value = transaction.QuantityBought });
+
+                    //Open the database connection
+                    connection.Open();
+                    //Insert the data
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public List<Transactions> GetHousesTransactions(int HouseID)
+        {
+            var Transactions = new List<Transactions>();
+
+            using (var connection = new OdbcConnection(_connectionString))
+            {
+                string query = @"SELECT TransactionID, HouseID, ItemName, BoughtStatus, QuantityBought
+                FROM Transactions
+                WHERE HouseID = ?";
+                using (var command = new OdbcCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("?", HouseID);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                if (!reader.IsDBNull(0) && !reader.IsDBNull(1) && !reader.IsDBNull(2) && !reader.IsDBNull(3) && !reader.IsDBNull(4))
+                                {
+                                    Transactions.Add(new Transactions
+                                    {
+                                        TransactionID = reader.GetInt32(0),
+                                        HouseID = reader.GetInt32(1),
+                                        ItemName = reader.GetString(2),
+                                        BoughtStatus = reader.GetBoolean(3),
+                                        QuantityBought = reader.GetString(4)
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Transactions;
+        }
+
+
     }
 }
 

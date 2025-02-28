@@ -32,10 +32,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtRouteName = new System.Windows.Forms.TextBox();
             this.panelNotes = new System.Windows.Forms.Panel();
+            this.txtRouteNotes = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddHouse = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.txtRouteNotes = new System.Windows.Forms.RichTextBox();
             this.dgvHouses = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelNotes.SuspendLayout();
@@ -83,6 +83,16 @@
             this.panelNotes.TabIndex = 21;
             this.panelNotes.Tag = "";
             // 
+            // txtRouteNotes
+            // 
+            this.txtRouteNotes.Enabled = false;
+            this.txtRouteNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtRouteNotes.Location = new System.Drawing.Point(3, 3);
+            this.txtRouteNotes.Name = "txtRouteNotes";
+            this.txtRouteNotes.Size = new System.Drawing.Size(598, 108);
+            this.txtRouteNotes.TabIndex = 0;
+            this.txtRouteNotes.Text = "";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -116,17 +126,9 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // txtRouteNotes
-            // 
-            this.txtRouteNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtRouteNotes.Location = new System.Drawing.Point(3, 3);
-            this.txtRouteNotes.Name = "txtRouteNotes";
-            this.txtRouteNotes.Size = new System.Drawing.Size(598, 108);
-            this.txtRouteNotes.TabIndex = 0;
-            this.txtRouteNotes.Text = "";
-            // 
             // dgvHouses
             // 
+            this.dgvHouses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHouses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHouses.Location = new System.Drawing.Point(122, 131);
             this.dgvHouses.Name = "dgvHouses";

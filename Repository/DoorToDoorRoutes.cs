@@ -21,4 +21,13 @@ namespace Door_to_Door_Sales_App.Repository
         public string HouseAddress { get; set; }
         public string HouseNotes { get; set; }
     }
+
+    public class Transactions
+    {
+        public int TransactionID { get; set; }
+        public int HouseID { get; set; }
+        public string ItemName { get; set; }
+        public Boolean BoughtStatus { get; set; }
+        public string QuantityBought { get; set; }
+    }
 }

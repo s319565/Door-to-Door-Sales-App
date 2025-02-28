@@ -37,7 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoughtStatus = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtQuantityBought = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -96,10 +96,9 @@
             // 
             // txtItemName
             // 
-            this.txtItemName.Enabled = false;
-            this.txtItemName.Location = new System.Drawing.Point(260, 201);
+            this.txtItemName.Location = new System.Drawing.Point(299, 201);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(307, 20);
+            this.txtItemName.Size = new System.Drawing.Size(268, 20);
             this.txtItemName.TabIndex = 32;
             // 
             // label4
@@ -115,7 +114,6 @@
             // 
             // txtBoughtStatus
             // 
-            this.txtBoughtStatus.Enabled = false;
             this.txtBoughtStatus.Location = new System.Drawing.Point(447, 240);
             this.txtBoughtStatus.Name = "txtBoughtStatus";
             this.txtBoughtStatus.Size = new System.Drawing.Size(120, 20);
@@ -132,13 +130,12 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Quantity of Item Sold:";
             // 
-            // textBox1
+            // txtQuantityBought
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(355, 280);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 20);
-            this.textBox1.TabIndex = 37;
+            this.txtQuantityBought.Location = new System.Drawing.Point(355, 280);
+            this.txtQuantityBought.Name = "txtQuantityBought";
+            this.txtQuantityBought.Size = new System.Drawing.Size(212, 20);
+            this.txtQuantityBought.TabIndex = 37;
             // 
             // button1
             // 
@@ -150,6 +147,7 @@
             this.button1.TabIndex = 38;
             this.button1.Text = "Add Transaction";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnBack
             // 
@@ -161,6 +159,7 @@
             this.btnBack.TabIndex = 39;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // AddTransactionpage
             // 
@@ -169,7 +168,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtQuantityBought);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBoughtStatus);
             this.Controls.Add(this.label4);
@@ -181,6 +180,7 @@
             this.Controls.Add(this.txtHouseAddress);
             this.Name = "AddTransactionpage";
             this.Text = "AddTransactionpage";
+            this.Load += new System.EventHandler(this.AddTransactionpage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -198,7 +198,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBoughtStatus;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtQuantityBought;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnBack;
     }

@@ -33,11 +33,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvHouseTransactions = new System.Windows.Forms.DataGridView();
+            this.dgvTransactions = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHouseTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // txtHouseAddress
@@ -89,13 +89,15 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Purchase History";
             // 
-            // dgvHouseTransactions
+            // dgvTransactions
             // 
-            this.dgvHouseTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHouseTransactions.Location = new System.Drawing.Point(46, 172);
-            this.dgvHouseTransactions.Name = "dgvHouseTransactions";
-            this.dgvHouseTransactions.Size = new System.Drawing.Size(715, 246);
-            this.dgvHouseTransactions.TabIndex = 29;
+            this.dgvTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransactions.Location = new System.Drawing.Point(46, 172);
+            this.dgvTransactions.Name = "dgvTransactions";
+            this.dgvTransactions.Size = new System.Drawing.Size(715, 246);
+            this.dgvTransactions.TabIndex = 29;
+            this.dgvTransactions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransactions_CellContentClick);
             // 
             // button1
             // 
@@ -107,6 +109,7 @@
             this.button1.TabIndex = 30;
             this.button1.Text = "Add Transaction";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -127,7 +130,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgvHouseTransactions);
+            this.Controls.Add(this.dgvTransactions);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -137,7 +140,7 @@
             this.Text = "ViewHousePage";
             this.Load += new System.EventHandler(this.ViewHousePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHouseTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,7 +153,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvHouseTransactions;
+        private System.Windows.Forms.DataGridView dgvTransactions;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

@@ -97,6 +97,7 @@
             // 
             this.dgvRoutes.AllowUserToAddRows = false;
             this.dgvRoutes.AllowUserToDeleteRows = false;
+            this.dgvRoutes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoutes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoutes.Location = new System.Drawing.Point(120, 175);
             this.dgvRoutes.Name = "dgvRoutes";
